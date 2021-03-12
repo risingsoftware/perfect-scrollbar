@@ -553,11 +553,12 @@ function bindMouseScrollHandler(
   var scrollBy = null;
 
   function mouseMoveHandler(e) {
+    var pageY_ = e[pageY];
     if (e.touches && e.touches[0]) {
-      e[pageY] = e.touches[0].pageY;
+      pageY_ = e.touches[0].pageY;
     }
     element[scrollTop] =
-      startingScrollTop + scrollBy * (e[pageY] - startingMousePageY);
+      startingScrollTop + scrollBy * (pageY_ - startingMousePageY);
     addScrollingClass(i, y);
     updateGeometry(i);
 
@@ -573,10 +574,11 @@ function bindMouseScrollHandler(
 
   function bindMoves(e, touchMode) {
     startingScrollTop = element[scrollTop];
+    var pageY_ = e[pageY];
     if (touchMode && e.touches) {
-      e[pageY] = e.touches[0].pageY;
+      pageY_ = e.touches[0].pageY;
     }
-    startingMousePageY = e[pageY];
+    startingMousePageY = pageY_;
     scrollBy =
       (i[contentHeight] - i[containerHeight]) /
       (i[railYHeight] - i[scrollbarYHeight]);
