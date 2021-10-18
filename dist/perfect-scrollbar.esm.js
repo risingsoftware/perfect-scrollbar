@@ -111,7 +111,7 @@ EventElement.prototype.bind = function bind (eventName, handler) {
     this.handlers[eventName] = [];
   }
   this.handlers[eventName].push(handler);
-  this.element.addEventListener(eventName, handler, false);
+  this.element.addEventListener(eventName, handler, { passive: false });
 };
 
 EventElement.prototype.unbind = function unbind (eventName, target) {
@@ -121,7 +121,7 @@ EventElement.prototype.unbind = function unbind (eventName, target) {
     if (target && handler !== target) {
       return true;
     }
-    this$1.element.removeEventListener(eventName, handler, false);
+    this$1.element.removeEventListener(eventName, handler, { passive: false });
     return false;
   });
 };
@@ -561,9 +561,7 @@ function bindMouseScrollHandler(
     updateGeometry(i);
 
     e.stopPropagation();
-    if (e.type.startsWith('touch')) {
-      if (e.changedTouches.length > 1) { e.preventDefault(); }
-    }
+    e.preventDefault();
   }
 
   function mouseUpHandler() {
