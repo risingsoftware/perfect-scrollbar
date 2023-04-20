@@ -1,6 +1,6 @@
 /*!
  * perfect-scrollbar v1.5.0
- * Copyright 2023 Hyunje Jun, MDBootstrap and Contributors
+ * Copyright 2021 Hyunje Jun, MDBootstrap and Contributors
  * Licensed under MIT
  */
 
@@ -1223,8 +1223,6 @@
     element.appendChild(this.scrollbarYRail);
     this.scrollbarY = div(cls.element.thumb('y'));
     this.scrollbarYRail.appendChild(this.scrollbarY);
-    this.scrollbarYRail.setAttribute('tabindex', 0);
-    this.scrollbarY.setAttribute('role', 'scrollbar');
     this.scrollbarY.setAttribute('tabindex', 0);
     this.event.bind(this.scrollbarY, 'focus', focus);
     this.event.bind(this.scrollbarY, 'blur', blur);

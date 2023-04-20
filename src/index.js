@@ -112,8 +112,6 @@ export default class PerfectScrollbar {
     element.appendChild(this.scrollbarYRail);
     this.scrollbarY = DOM.div(cls.element.thumb('y'));
     this.scrollbarYRail.appendChild(this.scrollbarY);
-    this.scrollbarYRail.setAttribute('tabindex', 0);
-    this.scrollbarY.setAttribute('role', 'scrollbar');
     this.scrollbarY.setAttribute('tabindex', 0);
     this.event.bind(this.scrollbarY, 'focus', focus);
     this.event.bind(this.scrollbarY, 'blur', blur);
